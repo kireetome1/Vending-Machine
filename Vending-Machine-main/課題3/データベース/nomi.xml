@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 5.2.1
+- https://www.phpmyadmin.net
+-
+- ホスト: 127.0.0.1
+- 生成日時: 2023-06-06 10:13:57
+- サーバのバージョン： 10.4.28-MariaDB
+- PHP のバージョン: 8.2.4
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="nomi" collation="utf8mb4_general_ci" charset="utf8mb4">
+            <pma:table name="drink">
+                CREATE TABLE `drink` (
+                  `SN` int(11) NOT NULL,
+                  `Name` varchar(15) NOT NULL,
+                  `Price` int(11) NOT NULL,
+                  `Quantity` int(11) NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            </pma:table>
+            <pma:table name="money">
+                CREATE TABLE `money` (
+                  `En` int(11) NOT NULL,
+                  `Quantity` int(11) NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - データベース: 'nomi'
+    -->
+    <database name="nomi">
+        <!-- テーブル drink -->
+        <table name="drink">
+            <column name="SN">1</column>
+            <column name="Name">Mango Lassi</column>
+            <column name="Price">270</column>
+            <column name="Quantity">20</column>
+        </table>
+        <table name="drink">
+            <column name="SN">2</column>
+            <column name="Name">Lassi</column>
+            <column name="Price">250</column>
+            <column name="Quantity">20</column>
+        </table>
+        <table name="drink">
+            <column name="SN">3</column>
+            <column name="Name">Coke</column>
+            <column name="Price">150</column>
+            <column name="Quantity">20</column>
+        </table>
+        <table name="drink">
+            <column name="SN">4</column>
+            <column name="Name">Fanta</column>
+            <column name="Price">130</column>
+            <column name="Quantity">20</column>
+        </table>
+        <table name="drink">
+            <column name="SN">5</column>
+            <column name="Name">Sprite</column>
+            <column name="Price">170</column>
+            <column name="Quantity">20</column>
+        </table>
+        <!-- テーブル money -->
+        <table name="money">
+            <column name="En">10</column>
+            <column name="Quantity">100</column>
+        </table>
+        <table name="money">
+            <column name="En">50</column>
+            <column name="Quantity">70</column>
+        </table>
+        <table name="money">
+            <column name="En">100</column>
+            <column name="Quantity">50</column>
+        </table>
+        <table name="money">
+            <column name="En">500</column>
+            <column name="Quantity">30</column>
+        </table>
+        <table name="money">
+            <column name="En">1000</column>
+            <column name="Quantity">0</column>
+        </table>
+    </database>
+</pma_xml_export>

@@ -1,0 +1,65 @@
+def buy_drink(self, drink_name, price):
+    if self.total_amount >= price:
+        try:
+            # Establish a database connection
+            conn = mysql.connector.connect(
+                host="localhost",
+                user="root",
+                password="",
+                database="nomi"
+            )
+
+            # Create a cursor object
+            cursor = conn.cursor()
+
+            # Update the database with the purchased drink
+            query = "UPDATE drink SET Quantity = Quantity - 1 WHERE name = %s"
+
+            # Execute the SQL query
+            cursor.execute(query, (drink_name,))
+
+            # Commit the changes to the database
+            conn.commit()
+
+            # Subtract the price from the total amount
+            self.total_amount -= price
+
+            # Update the balance label
+            self.label2.config(text=str(self.total_amount))
+
+            # Show a success message or perform any other necessary actions
+            print("Drink purchased successfully: ", drink_name)
+
+            denominations = [1000, 500, 100, 50, 10]
+            counts = {}
+
+            # Calculate the count of each denomination
+            for denomination in denominations:
+                count = self.total_amount // denomination
+                counts[denomination] = count
+                self.total_amount %= denomination
+
+            # Update the denominations in the database
+            for denomination, count in counts.items():
+                # Assuming you have a table called 'money' with columns 'En' and 'Quantity'
+                query = "UPDATE money SET Quantity = Quantity + %s WHERE En = %s"
+                values = (count, denomination)
+                cursor.execute(query, values)
+
+            # Commit the changes to the database
+            conn.commit()
+
+            # Close the cursor and database connection
+            cursor.close()
+            conn.close()
+
+            # To proceed or not
+            Continue.nextproduct()
+
+        except mysql.connector.Error as e:
+            print("Database Error:", e)
+
+    else:
+        # Show an error message or perform any other necessary actions
+        print("Insufficient balance to purchase the drink.")
+        balance_Ng.balance()
